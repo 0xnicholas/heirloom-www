@@ -1,0 +1,100 @@
+---
+// PROTOTYPE (#5) — throwaway. Hosts the three pillars-diagram variants on the
+// index page's #pillars section, switchable via ?variant=A|B|C with a
+// floating bottom bar (← / → keys work too). The winning variant gets
+// rewritten into the real section; this directory then leaves main.
+import VariantA from './VariantA.astro';
+import VariantB from './VariantB.astro';
+import VariantC from './VariantC.astro';
+---
+
+<div id="pillars-prototype">
+  <div data-variant-panel="A"><VariantA /></div>
+  <div data-variant-panel="B" hidden><VariantB /></div>
+  <div data-variant-panel="C" hidden><VariantC /></div>
+
+  <nav class="switcher" aria-label="Prototype variant switcher">
+    <button type="button" data-prev aria-label="Previous variant">&larr;</button>
+    <span data-variant-label class="mono"></span>
+    <button type="button" data-next aria-label="Next variant">&rarr;</button>
+  </nav>
+</div>
+
+<script>
+  const panels = document.querySelectorAll('[data-variant-panel]');
+  const label = document.querySelector('[data-variant-label]');
+  const names = {
+    A: 'Radial hub',
+    B: 'Layered stack',
+    C: 'Pillars on a plinth',
+  };
+  const keys = Object.keys(names);
+
+  function current() {
+    const v = new URLSearchParams(location.search).get('variant');
+    return v !== null && keys.includes(v) ? v : 'A';
+  }
+
+  function show(v) {
+    panels.forEach((p) => {
+      p.hidden = p.dataset.variantPanel !== v;
+    });
+    if (label) label.textContent = `${v} — ${names[v]}`;
+    const url = new URL(location.href);
+    url.searchParams.set('variant', v);
+    history.replaceState(null, '', url);
+  }
+
+  function step(dir) {
+    const i = keys.indexOf(current());
+    show(keys[(i + dir + keys.length) % keys.length]);
+  }
+
+  document.querySelector('[data-prev]')?.addEventListener('click', () => step(-1));
+  document.querySelector('[data-next]')?.addEventListener('click', () => step(1));
+  window.addEventListener('keydown', (e) => {
+    const t = e.target;
+    if (
+      t instanceof HTMLElement &&
+      (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)
+    ) {
+      return;
+    }
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+
+  show(current());
+</script>
+
+<style>
+  .switcher {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    font-size: 0.85rem;
+    z-index: 100;
+  }
+  .switcher button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 0.35rem;
+  }
+  .switcher [data-variant-label] {
+    min-width: 14ch;
+    text-align: center;
+    font-size: 0.78rem;
+  }
+</style>

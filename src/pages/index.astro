@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PillarsPrototype from '../components/prototype/PillarsPrototype.astro';
 
 const title = 'Heirloom — Your enterprise domain model, as code.';
 const description =
@@ -27,7 +28,8 @@ const description =
     </header>
 
     <section id="pillars">
-      <!-- Four pillars: data / actions / logic / security. Diagram per #5. -->
+      <!-- PROTOTYPE (#5): three diagram variants, switch via ?variant=A|B|C -->
+      <PillarsPrototype />
     </section>
 
     <section id="code-sample">

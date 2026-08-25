@@ -1,0 +1,77 @@
+---
+// PROTOTYPE (#5) — throwaway. Variant C: literal pillars on a plinth.
+// Four columns with a lintel on top and a shared plinth below.
+---
+
+<div class="temple">
+  <div class="lintel mono">HEIRLOOM</div>
+  <div class="columns">
+    <div class="pillar">
+      <span class="p-label mono">DATA</span>
+      <span class="p-desc">Object types &amp; first-class links, modeled once.</span>
+    </div>
+    <div class="pillar">
+      <span class="p-label mono">ACTIONS</span>
+      <span class="p-desc">Typed domain verbs; the only write path.</span>
+    </div>
+    <div class="pillar">
+      <span class="p-label mono">LOGIC</span>
+      <span class="p-desc">Read functions over the model.</span>
+    </div>
+    <div class="pillar">
+      <span class="p-label mono">SECURITY</span>
+      <span class="p-desc">Permissions &amp; audit on every action; fails closed.</span>
+    </div>
+  </div>
+  <div class="plinth mono">ONE ONTOLOGY — DEFINED ONCE IN TYPESCRIPT</div>
+</div>
+
+<style>
+  .temple {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .lintel {
+    border: 1px solid var(--ink);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    color: var(--ink);
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-left: 1px solid var(--rule);
+  }
+  .pillar {
+    border-right: 1px solid var(--rule);
+    padding: 1.5rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-height: 11rem;
+  }
+  .p-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .p-desc {
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .plinth {
+    background: var(--accent);
+    color: #fcfcfa;
+    border-radius: 0 0 8px 8px;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+</style>

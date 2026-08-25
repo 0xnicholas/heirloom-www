@@ -1,0 +1,68 @@
+---
+// PROTOTYPE (#5) — throwaway. Variant B: layered stack.
+// Four rows standing on a shared foundation bar.
+---
+
+<div class="stack">
+  <div class="layer">
+    <span class="idx mono">01</span>
+    <span class="name mono">DATA</span>
+    <span class="desc">Object types, properties, and first-class links — modeled once.</span>
+  </div>
+  <div class="layer">
+    <span class="idx mono">02</span>
+    <span class="name mono">ACTIONS</span>
+    <span class="desc">Explicit domain verbs with typed parameters — the only write path.</span>
+  </div>
+  <div class="layer">
+    <span class="idx mono">03</span>
+    <span class="name mono">LOGIC</span>
+    <span class="desc">Read functions computed over the model, shared by every consumer.</span>
+  </div>
+  <div class="layer">
+    <span class="idx mono">04</span>
+    <span class="name mono">SECURITY</span>
+    <span class="desc">Permissions and audit at the action boundary — fails closed.</span>
+  </div>
+  <div class="foundation mono">ONE ONTOLOGY — DEFINED ONCE IN TYPESCRIPT</div>
+</div>
+
+<style>
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .layer {
+    display: grid;
+    grid-template-columns: 3ch 12ch 1fr;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.9rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .idx {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+  }
+  .name {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+  .desc {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+  }
+  .foundation {
+    margin-top: 0.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--accent);
+    color: #fcfcfa;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+</style>
