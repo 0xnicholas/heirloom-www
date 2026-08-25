@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Pillars from '../components/Pillars.astro';
+import FullPagePrototype from '../components/prototype/FullPagePrototype.astro';
 
 const title = 'Heirloom — Your enterprise domain model, as code.';
 const description =
@@ -19,28 +19,7 @@ const description =
     <meta property="og:description" content={description} />
   </head>
   <body>
-    <header class="hero">
-      <h1>Your enterprise domain model, as code.</h1>
-      <p class="subhead">
-        Heirloom is an open-source, self-hosted ontology layer: data, actions,
-        logic, and security — defined once in TypeScript.
-      </p>
-    </header>
-
-    <section id="pillars">
-      <Pillars />
-    </section>
-
-    <section id="code-sample">
-      <!-- Hero DSL fragment per #2: Department + transferEmployee. -->
-    </section>
-
-    <footer>
-      <p>
-        Heirloom is in design; the spec is public on{' '}
-        <a href="https://github.com/0xnicholas/heirloom-pro">GitHub</a>.
-        Apache-2.0.
-      </p>
-    </footer>
+    <!-- PROTOTYPE (#6): three full-page assemblies, switch via ?variant=A|B|C -->
+    <FullPagePrototype />
   </body>
 </html>

@@ -1,0 +1,60 @@
+---
+// PROTOTYPE (#6) — throwaway. Variant A "Classic":
+// Hero → Pillars → Code → closing CTA band → footer. CTA only at the end.
+import Pillars from '../Pillars.astro';
+import CodeSample from './CodeSample.astro';
+---
+
+<header class="hero">
+  <h1>Your enterprise domain model, as code.</h1>
+  <p class="subhead">
+    Heirloom is an open-source, self-hosted ontology layer: data, actions,
+    logic, and security — defined once in TypeScript.
+  </p>
+</header>
+
+<section>
+  <Pillars />
+</section>
+
+<section>
+  <CodeSample />
+</section>
+
+<section class="closing">
+  <h2>Heirloom is open source.</h2>
+  <a class="cta-button" href="https://github.com/0xnicholas/heirloom-pro">
+    View on GitHub
+  </a>
+</section>
+
+<footer>
+  <p>
+    Heirloom is in design; the spec is public on{' '}
+    <a href="https://github.com/0xnicholas/heirloom-pro">GitHub</a>. Apache-2.0.
+  </p>
+</footer>
+
+<style>
+  .closing {
+    text-align: center;
+    padding: 4.5rem 0;
+  }
+  .closing h2 {
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fcfcfa;
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .cta-button:hover {
+    text-decoration: none;
+    opacity: 0.92;
+  }
+</style>

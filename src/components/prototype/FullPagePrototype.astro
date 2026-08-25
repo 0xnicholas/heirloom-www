@@ -1,0 +1,98 @@
+---
+// PROTOTYPE (#6) — throwaway. Hosts three full-page assembly variants on the
+// index route, switchable via ?variant=A|B|C (floating bar, ← / → keys).
+// The winner gets rewritten into the real index page; this directory then
+// leaves main.
+import FullPageA from './FullPageA.astro';
+import FullPageB from './FullPageB.astro';
+import FullPageC from './FullPageC.astro';
+---
+
+<div data-variant-panel="A"><FullPageA /></div>
+<div data-variant-panel="B" hidden><FullPageB /></div>
+<div data-variant-panel="C" hidden><FullPageC /></div>
+
+<nav class="switcher" aria-label="Prototype variant switcher">
+  <button type="button" data-prev aria-label="Previous variant">&larr;</button>
+  <span data-variant-label class="mono"></span>
+  <button type="button" data-next aria-label="Next variant">&rarr;</button>
+</nav>
+
+<script>
+  const panels = document.querySelectorAll('[data-variant-panel]');
+  const label = document.querySelector('[data-variant-label]');
+  const names = {
+    A: 'Classic — pillars, code, CTA last',
+    B: 'Code-first — proof before concepts',
+    C: 'CTA-forward — ask up front',
+  };
+  const keys = Object.keys(names);
+
+  function current() {
+    const v = new URLSearchParams(location.search).get('variant');
+    return v !== null && keys.includes(v) ? v : 'A';
+  }
+
+  function show(v) {
+    panels.forEach((p) => {
+      p.hidden = p.dataset.variantPanel !== v;
+    });
+    if (label) label.textContent = `${v} — ${names[v]}`;
+    const url = new URL(location.href);
+    url.searchParams.set('variant', v);
+    history.replaceState(null, '', url);
+  }
+
+  function step(dir) {
+    const i = keys.indexOf(current());
+    show(keys[(i + dir + keys.length) % keys.length]);
+  }
+
+  document.querySelector('[data-prev]')?.addEventListener('click', () => step(-1));
+  document.querySelector('[data-next]')?.addEventListener('click', () => step(1));
+  window.addEventListener('keydown', (e) => {
+    const t = e.target;
+    if (
+      t instanceof HTMLElement &&
+      (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)
+    ) {
+      return;
+    }
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+
+  show(current());
+</script>
+
+<style>
+  .switcher {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    font-size: 0.85rem;
+    z-index: 100;
+  }
+  .switcher button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 0.35rem;
+  }
+  .switcher [data-variant-label] {
+    min-width: 30ch;
+    text-align: center;
+    font-size: 0.78rem;
+  }
+</style>

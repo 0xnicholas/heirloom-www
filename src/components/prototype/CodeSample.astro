@@ -1,0 +1,58 @@
+---
+// PROTOTYPE (#6) — throwaway host for the hero DSL fragment chosen in #2
+// (Department + transferEmployee, English displayNames, budget line and
+// redundant comments trimmed per docs/research/code-sample.md).
+// Highlighted at build time via Shiki — no client JS.
+import { Code } from 'astro:components';
+
+const code = `export const Department = objectType({
+  apiName: 'department',
+  displayName: 'Department',
+  properties: {
+    name: p.string().required().unique().length(1, 80),
+  },
+  links: {
+    employees: link.oneToMany(() => Employee, { reverse: 'department' }),
+  },
+});
+
+export const transferEmployee = action({
+  apiName: 'transfer-employee',
+  displayName: 'Transfer employee',
+  params: {
+    employee: p.ref(() => Employee).required(),
+    toDepartment: p.ref(() => Department).required(),
+  },
+  execute: (ctx, { employee, toDepartment }) => {
+    // Linking moves the employee; the old department link is dropped.
+    ctx.link(Department, toDepartment, 'employees', employee);
+    return { employeeId: employee.id, departmentId: toDepartment.id };
+  },
+});`;
+---
+
+<div class="codebox">
+  <div class="tab mono">ontology.ts</div>
+  <Code code={code} lang="ts" theme="github-light" />
+</div>
+
+<style>
+  .codebox {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  .tab {
+    padding: 0.55rem 1rem;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    border-bottom: 1px solid var(--rule);
+  }
+  .codebox pre {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+</style>
