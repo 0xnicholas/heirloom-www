@@ -1,0 +1,80 @@
+/* Visual baseline: light, minimal.
+   Fonts: system sans for body, system mono for accents (code, labels).
+   Swap in webfonts (e.g. Inter / JetBrains Mono) later by changing the
+   two stacks only — components reference the variables, not the stacks. */
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Palette: light background + ink + one accent. */
+  --bg: #fcfcfa;
+  --ink: #1b1b18;
+  --ink-muted: #63635c;
+  --accent: #4f46e5;
+  --rule: #e6e6e0;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+body {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+code,
+pre,
+.mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  padding: 6rem 0 4rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero .subhead {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  color: var(--ink-muted);
+  max-width: 56ch;
+}
+
+section {
+  padding: 3rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+footer {
+  padding: 3rem 0 4rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}

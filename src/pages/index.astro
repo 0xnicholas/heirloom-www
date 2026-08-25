@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+const title = 'Heirloom — Your enterprise domain model, as code.';
+const description =
+  'Heirloom is an open-source, self-hosted ontology layer: data, actions, logic, and security — defined once in TypeScript.';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Your enterprise domain model, as code.</h1>
+      <p class="subhead">
+        Heirloom is an open-source, self-hosted ontology layer: data, actions,
+        logic, and security — defined once in TypeScript.
+      </p>
+    </header>
+
+    <section id="pillars">
+      <!-- Four pillars: data / actions / logic / security. Diagram per #5. -->
+    </section>
+
+    <section id="code-sample">
+      <!-- Hero DSL fragment per #2: Department + transferEmployee. -->
+    </section>
+
+    <footer>
+      <p>
+        Heirloom is in design; the spec is public on{' '}
+        <a href="https://github.com/0xnicholas/heirloom-pro">GitHub</a>.
+        Apache-2.0.
+      </p>
+    </footer>
+  </body>
+</html>
