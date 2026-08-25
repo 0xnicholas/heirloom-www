@@ -8,6 +8,7 @@ const description =
   'Heirloom is an open-source, self-hosted ontology layer: data, actions, logic, and security — defined once in TypeScript.';
 const repoUrl = 'https://github.com/0xnicholas/heirloom-platform';
 const specUrl = 'https://github.com/0xnicholas/heirloom-platform/tree/main/docs/spec';
+const ogImageUrl = new URL('og.png', Astro.site);
 ---
 
 <html lang="en">
@@ -22,6 +23,13 @@ const specUrl = 'https://github.com/0xnicholas/heirloom-platform/tree/main/docs/
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body>
     <header class="hero">
