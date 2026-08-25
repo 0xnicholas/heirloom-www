@@ -1,10 +1,12 @@
 ---
 import '../styles/global.css';
 import Pillars from '../components/Pillars.astro';
+import CodeSample from '../components/CodeSample.astro';
 
 const title = 'Heirloom — Your enterprise domain model, as code.';
 const description =
   'Heirloom is an open-source, self-hosted ontology layer: data, actions, logic, and security — defined once in TypeScript.';
+const repoUrl = 'https://github.com/0xnicholas/heirloom-pro';
 ---
 
 <html lang="en">
@@ -25,6 +27,10 @@ const description =
         Heirloom is an open-source, self-hosted ontology layer: data, actions,
         logic, and security — defined once in TypeScript.
       </p>
+      <div class="cta-row">
+        <a class="cta-button" href={repoUrl}>View on GitHub</a>
+        <a class="cta-ghost" href={repoUrl}>Read the spec</a>
+      </div>
     </header>
 
     <section id="pillars">
@@ -32,15 +38,48 @@ const description =
     </section>
 
     <section id="code-sample">
-      <!-- Hero DSL fragment per #2: Department + transferEmployee. -->
+      <CodeSample />
     </section>
 
     <footer>
       <p>
         Heirloom is in design; the spec is public on{' '}
-        <a href="https://github.com/0xnicholas/heirloom-pro">GitHub</a>.
-        Apache-2.0.
+        <a href={repoUrl}>GitHub</a>. Apache-2.0.
       </p>
     </footer>
   </body>
 </html>
+
+<style>
+  .cta-row {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fcfcfa;
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .cta-button:hover {
+    text-decoration: none;
+    opacity: 0.92;
+  }
+  .cta-ghost {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .cta-ghost:hover {
+    text-decoration: none;
+    background: #ffffff;
+  }
+</style>
