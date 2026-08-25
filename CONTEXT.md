@@ -1,6 +1,6 @@
 # heirloom-www 语境
 
-Heirloom 的正式英文单页官网（Astro 静态站）。本术语表由 wayfinder 图 [#1](https://github.com/0xnicholas/heirloom-www/issues/1) 的决议维护。本体领域术语（对象类型/链接/动作/属性等）以 `heirloom-pro` 的 [CONTEXT.md](https://github.com/0xnicholas/heirloom-pro/blob/main/CONTEXT.md) 为权威，本站不另定义。
+Heirloom 的正式英文单页官网（Astro 静态站）。本术语表由 wayfinder 图 [#1](https://github.com/0xnicholas/heirloom-www/issues/1) 的决议维护。本体领域术语（对象类型/链接/动作/属性等）以 `heirloom-platform` 仓库内的 [CONTEXT.md](https://github.com/0xnicholas/heirloom-platform/blob/main/CONTEXT.md) 为权威，本站不另定义。
 
 ## 页面结构
 
@@ -16,7 +16,7 @@ _Avoid_: slogan, tagline
 Headline 之下的一句支撑陈述，必含五术语（domain model / open-source / self-hosted / ontology / 四支柱）。定稿见 ADR-0003。
 
 **CTA 行**:
-Hero 内的按钮组：View on GitHub（实心）+ Read the spec（描边），均指向 `heirloom-pro` 仓库。
+Hero 内的按钮组：View on GitHub（实心，指 `heirloom-platform` 仓库）+ Read the spec（描边，指 `heirloom-platform` 的 `docs/spec`）。
 
 **四支柱（four pillars）**:
 固定写法 "data, actions, logic, and security"，顺序固定。概念区图解为柱式：楣梁 + 四柱 + 柱础。
