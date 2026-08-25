@@ -5,7 +5,7 @@
 Astro static site, no JS framework islands. `npm install` once, then `npm run dev` / `npm run build` (output in `dist/`).
 
 - Page: `src/pages/index.astro`; shared styles: `src/styles/global.css` (fonts and palette live as CSS custom properties at the top).
-- Copy and wording follow the decisions in map issue [#1](https://github.com/0xnicholas/heirloom-www/issues/1) (hero copy + wording charter from #3; code sample from #2, see `docs/research/code-sample.md`).
+- Copy and wording are specced in `CONTEXT.md` + `docs/adr/` (wording charter: ADR-0003; positioning: ADR-0002; code sample: ADR-0004 + `docs/research/code-sample.md`). These derive from map issue [#1](https://github.com/0xnicholas/heirloom-www/issues/1).
 
 ## Agent skills
 
