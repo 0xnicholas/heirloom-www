@@ -3,7 +3,10 @@ import { defineConfig } from 'astro/config';
 // Static output, no JS framework islands — plain HTML + CSS.
 export default defineConfig({
   output: 'static',
-  // Placeholder origin until hosting/domain is decided (#9); used to build
-  // absolute URLs for og:image and friends. Update this one value at launch.
+  // Hosting: GitHub Pages project site (ADR-0005). `site` intentionally
+  // carries the project path so absolute URLs (og:image) resolve correctly —
+  // if you change one of `site`/`base`, change both. Static asset references
+  // in pages must use import.meta.env.BASE_URL.
   site: 'https://0xnicholas.github.io/heirloom-www/',
+  base: '/heirloom-www/',
 });
